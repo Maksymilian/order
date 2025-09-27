@@ -9,4 +9,5 @@ data class Order(
     val totalAmount: BigDecimal,
     val number: String,
     val status: OrderStatus,
-    val deductions: List<Deduction>)
+    val deductions: List<Deduction>,
+)

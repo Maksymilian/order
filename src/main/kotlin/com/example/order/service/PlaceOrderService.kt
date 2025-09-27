@@ -12,9 +12,8 @@ import reactor.core.publisher.Mono
 class PlaceOrderService(
     val mapper: Mapper,
     val ordersRepository: OrdersRepository,
-    val transactionalOperator: TransactionalOperator
+    val transactionalOperator: TransactionalOperator,
 ) {
-
     fun placeOrder(product: CreateOrder): Mono<Order> {
         TODO("Not yet implemented")
 //        TODO napisać generowanie numeru zamówienia, utworzenie zamówienia, wysłanie rezerwacji do inventory i zmianę statusu (równolegle),

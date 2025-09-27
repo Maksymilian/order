@@ -1,4 +1,4 @@
-package com.example.inventory.security
+package com.example.order.security
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -10,23 +10,22 @@ import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder
 import org.springframework.security.web.server.SecurityWebFilterChain
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository
 
-
 // TODO A potential enhancement: implement with Spring Kotlin Bean Definition DSL
 @Configuration
 class SecurityConfig {
-
     @Bean
     fun reactiveJwtDecoder(
         @Value("\${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
-        issuerUri: String
-    ): ReactiveJwtDecoder = NimbusReactiveJwtDecoder.withIssuerLocation(issuerUri)
-        .build()
+        issuerUri: String,
+    ): ReactiveJwtDecoder =
+        NimbusReactiveJwtDecoder.withIssuerLocation(issuerUri)
+            .build()
 
     @Bean
     fun securityWebFilterChain(
         http: ServerHttpSecurity,
         jwtConverter: JwtConverter,
-        reactiveJwtDecoder: ReactiveJwtDecoder
+        reactiveJwtDecoder: ReactiveJwtDecoder,
     ): SecurityWebFilterChain =
         http.csrf { it.disable() }
             .oauth2ResourceServer { oauth2 ->

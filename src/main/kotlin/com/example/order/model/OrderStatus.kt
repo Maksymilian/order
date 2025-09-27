@@ -5,5 +5,5 @@ enum class OrderStatus {
     PLACED,
     PREPARED,
     SENT,
-    RECEIVED
+    RECEIVED,
 }

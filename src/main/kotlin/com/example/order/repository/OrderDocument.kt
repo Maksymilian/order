@@ -9,7 +9,7 @@ import java.math.BigDecimal
 import java.time.Instant
 
 @Document(collection = "orders")
-data class OrderDocument (
+data class OrderDocument(
     @Id
     val id: ObjectId?,
     @CreatedDate
@@ -18,5 +18,5 @@ data class OrderDocument (
     val paymentBankAccountNumber: String,
     val orderNumber: String,
     val totalAmount: BigDecimal,
-    val items: List<Deduction>
+    val items: List<Deduction>,
 )

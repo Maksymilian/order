@@ -1,7 +1,5 @@
-package com.example.inventory.security
+package com.example.order.security
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.convert.converter.Converter
 import org.springframework.security.authentication.AbstractAuthenticationToken
@@ -12,11 +10,10 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Mono
-import java.util.stream.Collectors
+import kotlin.collections.get
 
 @Component
 class JwtConverter : Converter<Jwt, Mono<AbstractAuthenticationToken>> {
-
     @Value("\${clientId}")
     private val clientId: String? = null
 

@@ -8,4 +8,5 @@ data class CreateOrder(
     val paymentBankAccountNumber: String,
     val totalAmount: BigDecimal,
     val status: OrderStatus,
-    val deductions: List<Deduction>)
+    val deductions: List<Deduction>,
+)

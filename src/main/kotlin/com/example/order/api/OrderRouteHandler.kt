@@ -1,4 +1,4 @@
-package com.example.mongo_webflux.restaurant.api
+package com.example.order.api
 
 import com.example.order.dto.PlaceOrderDTO
 import com.example.order.mapper.Mapper
@@ -12,13 +12,12 @@ import java.net.URI
 
 @Component
 class OrderRouteHandler(val mapper: Mapper, val placeOrderService: PlaceOrderService) {
-
     fun placeOrder(request: ServerRequest): Mono<ServerResponse> {
         return request
             .bodyToMono(PlaceOrderDTO::class.java)
-            .map { mapper.mapToAggregate( it) }
-            .flatMap { product ->  placeOrderService.placeOrder(product)}
+            .map { mapper.mapToAggregate(it) }
+            .flatMap { product -> placeOrderService.placeOrder(product) }
             .map(mapper::mapToDto)
-            .flatMap { created -> created(URI.create("http://localhost:8020/test/" + created.number)).bodyValue(created)}
+            .flatMap { created -> created(URI.create("http://localhost:8020/test/" + created.number)).bodyValue(created) }
     }
 }
