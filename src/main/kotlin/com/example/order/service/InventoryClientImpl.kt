@@ -1,6 +1,5 @@
 package com.example.order.service
 
-import com.example.order.config.GlobalFunctionalExceptionHandler
 import com.example.order.dto.ReserveDTO
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
