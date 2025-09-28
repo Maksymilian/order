@@ -1,21 +1,18 @@
-package com.example.order.config;
+package com.example.order.config
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.reactive.function.client.WebClient;
-
-import static org.springframework.http.HttpHeaders.ACCEPT;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
+import org.springframework.web.reactive.function.client.WebClient
 
 @Configuration
-public class WebClientConfig {
-
+class WebClientConfig {
     @Bean
-    public WebClient inventoryServiceWebClient(WebClient.Builder webClientBuilder) {
-        return webClientBuilder
-//                TODO fix: use configuratoin property to connect to the service
-                .baseUrl("http://api.servicea.com")
-                .defaultHeader(ACCEPT, APPLICATION_JSON_VALUE)
-                .build();
+    fun inventoryServiceWebClient(webClientBuilder: WebClient.Builder): WebClient {
+        return webClientBuilder //                TODO fix: use configuratoin property to connect to the service
+            .baseUrl("http://api.servicea.com")
+            .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+            .build()
     }
 }
