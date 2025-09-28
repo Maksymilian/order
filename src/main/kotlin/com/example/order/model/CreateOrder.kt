@@ -1,12 +1,15 @@
 package com.example.order.model
 
 import java.math.BigDecimal
-import java.time.Instant
 
 data class CreateOrder(
-    val createdAt: Instant?,
     val paymentBankAccountNumber: String,
     val totalAmount: BigDecimal,
+    private val _deductions: List<Deduction>,
+    val paymentConfirmed: Boolean,
+    val number: String?,
     val status: OrderStatus,
-    val deductions: List<Deduction>,
-)
+) {
+    val deductions
+        get() = this._deductions.map { it.copy() }
+}

@@ -26,10 +26,12 @@ class JwtConverter : Converter<Jwt, Mono<AbstractAuthenticationToken>> {
     }
 
     private fun customAuthorities(jwt: Jwt): Set<GrantedAuthority> {
-        val resourceAccess = jwt.getClaim<Map<String, Any>>("resource_access").toMap()[clientId] as Map<*, *>
-        val roles = resourceAccess["roles"] as List<*>
+        val resourceAccessClaim = jwt.getClaim<Any>("resource_access")
+        val resourceAccess = (resourceAccessClaim as? Map<*, *>) ?: return emptySet()
+        val clientResource = clientId?.let { resourceAccess[it] as? Map<*, *> } ?: return emptySet()
+        val roles = clientResource["roles"] as? List<*> ?: return emptySet()
         return roles.asSequence()
-            .map { it.toString() }
+            .mapNotNull { it?.toString() }
             .map { it.replace('-', '_') }
             .map { it.uppercase() }
             .map(::SimpleGrantedAuthority)

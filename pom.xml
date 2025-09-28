@@ -16,23 +16,9 @@
 
     <name>order</name>
     <description>Small app</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-
-    <developers>
-        <developer/>
-    </developers>
-
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
 
     <properties>
+        <!--        TODO possible enhancement: migrate to JDK 25-->
         <java.version>21</java.version>
         <kotlin.version>2.2.0</kotlin.version>
     </properties>
@@ -195,15 +181,15 @@
                         <phase>validate</phase>
                     </execution>
                 </executions>
-                    <configuration>
-                        <kotlin>
-                            <includes>
-                                <include>src/main/kotlin/**/*.kt</include>
-                                <include>src/test/kotlin/**/*.kt</include>
-                            </includes>
-                            <ktlint/>
-                        </kotlin>
-                    </configuration>
+                <configuration>
+                    <kotlin>
+                        <includes>
+                            <include>src/main/kotlin/**/*.kt</include>
+                            <include>src/test/kotlin/**/*.kt</include>
+                        </includes>
+                        <ktlint/>
+                    </kotlin>
+                </configuration>
             </plugin>
         </plugins>
     </build>
