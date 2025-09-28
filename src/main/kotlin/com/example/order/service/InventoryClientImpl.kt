@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono
 @Service
 class InventoryClientImpl(val inventoryServiceWebClient: WebClient) : InventoryClient {
     companion object {
-        private val logger = LoggerFactory.getLogger(GlobalFunctionalExceptionHandler::class.java)
+        private val logger = LoggerFactory.getLogger(InventoryClientImpl::class.java)
     }
 
     override fun reserveStock(reserveDTO: ReserveDTO): Mono<ClientResponse> =
