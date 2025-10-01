@@ -25,7 +25,7 @@ class OrderMongoPort(val ordersRepository: OrdersRepository, val mapper: Mapper)
                 )
             }
             .onErrorResume(Exception::class.java) {
-                logger.error("Failed to store an  order", it)
+                logger.error("Failed to store an order", it)
                 Mono.just(
                     OrderPortResultFailure(
                         message = it.message ?: "",
