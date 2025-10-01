@@ -5,7 +5,6 @@ import java.time.Instant
 sealed interface OrderResult
 
 data class OrderPlaced(
-    val id: String,
     val createdAt: Instant,
     val number: String,
 ) : OrderResult
