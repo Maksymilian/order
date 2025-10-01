@@ -51,7 +51,7 @@ The primary rationale for this decision is alignment with the existing Spring ec
 
 ### Positive Consequences
 
-* **Guaranteed Compatibility:** Future Spring Boot upgrades will automatically manage Spring Retry dependency versions, minimizing upgrade friction.
+* **Guaranteed Compatibility:** Future Spring Boot upgrades will automatically manage versions minimizing upgrade friction.
 
 * **Simple Codebase:** Resilience logic is compatible with Reactor.
 

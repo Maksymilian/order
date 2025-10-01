@@ -1,0 +1,17 @@
+server:
+  port: 8380
+order:
+  clientId: order
+spring:
+  application:
+    name: order
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:7081/realms/order-dev
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    mongodb:
+      uri: mongodb://localhost:27017/your_database
