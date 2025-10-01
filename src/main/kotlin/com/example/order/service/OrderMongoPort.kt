@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono
 
 class OrderMongoPort(val ordersRepository: OrdersRepository, val mapper: Mapper) : OrderPort {
     companion object {
-        private val logger = LoggerFactory.getLogger(InventoryWebClientPort::class.java)
+        private val logger = LoggerFactory.getLogger(OrderMongoPort::class.java)
     }
 
     override fun storeOrder(createOrder: CreateOrder): Mono<OrderPortResult<OrderDocumentSaveSuccess>> =
