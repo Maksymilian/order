@@ -25,10 +25,9 @@ import java.util.Map
 @Order(-2)
 class GlobalFunctionalExceptionHandler(
     errorAttributes: ErrorAttributes,
-    resourceProperties: WebProperties.Resources,
     applicationContext: ApplicationContext,
     serverCodecConfigurer: ServerCodecConfigurer,
-) : AbstractErrorWebExceptionHandler(errorAttributes, resourceProperties, applicationContext) {
+) : AbstractErrorWebExceptionHandler(errorAttributes, WebProperties.Resources(), applicationContext) {
     companion object {
         private val logger = LoggerFactory.getLogger(GlobalFunctionalExceptionHandler::class.java)
     }

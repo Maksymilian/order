@@ -5,10 +5,8 @@ import java.math.BigDecimal
 data class CreateOrder(
     val paymentBankAccountNumber: String,
     val totalAmount: BigDecimal,
-    private val _deductions: List<Deduction>,
-    val paymentConfirmed: Boolean,
     val number: String?,
-    val status: OrderStatus,
+    private val _deductions: List<Deduction>,
 ) {
     val deductions
         get() = this._deductions.map { it.copy() }
