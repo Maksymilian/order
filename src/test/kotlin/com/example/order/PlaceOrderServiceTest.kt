@@ -107,7 +107,7 @@ internal class PlaceOrderServiceTest {
         val paymentBankAccountNumber = "123456789"
         val totalAmount = BigDecimal("100.0")
         val number = "ORD-001"
-        val deductions = List.of<Deduction?>(Deduction("STR-AR4-BLU-10", 3), Deduction("ALR-BE0-WHT-42", 1))
+        val deductions = List.of<Deduction>(Deduction("STR-AR4-BLU-10", 3), Deduction("ALR-BE0-WHT-42", 1))
         val orderNumber = "ORD-001"
         val fixedInstant = this.fixedDate
         Mockito.`when`<Mono<String>>(orderNumberService.generateNextNumber())
