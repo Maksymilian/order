@@ -15,7 +15,7 @@ import reactor.test.StepVerifier
 @PactTestFor(providerName = "StockProvider", port = "8096")
 class RequestStockTransportPactTest {
     @Pact(provider = "StockProvider", consumer = "test_consumer")
-    fun requestTransport(builder: PactDslWithProvider) =
+    fun requestTransport(builder: PactDslWithProvider): V4Pact =
         builder
             .given("Prepared order")
             .uponReceiving("a request to request transport")

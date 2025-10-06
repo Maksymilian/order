@@ -18,6 +18,7 @@ class WebClientConfig {
         .baseUrl(stockUrl)
         .filter(
             ServerOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager)
-                .also { authorizedClientManager -> authorizedClientManager.setDefaultClientRegistrationId("shop") })
+                .also { authorizedClientManager -> authorizedClientManager.setDefaultClientRegistrationId("shop") },
+        )
         .build()
 }

@@ -28,7 +28,7 @@ class PlaceOrderService(
             .flatMap { createOrder ->
                 val databaseWrite = orderPort.storeOrder(createOrder)
                 val clientCall = stockPort.reserveStock(mapper.maptoReserveStockRequest(createOrder))
-                val order: Mono<CreateOrder> = Mono.just(createOrder)
+                val order = Mono.just(createOrder)
                 Mono.zip(clientCall, databaseWrite, order)
             }.flatMap { (clientCall, databaseWrite, order) ->
 //                TODO:possible enhancement - replace with a  queue
