@@ -6,8 +6,10 @@ import com.example.order.repository.OrdersRepository
 import com.example.order.service.OrderPortResult.OrderPortResultFailure
 import com.example.order.service.OrderPortResult.OrderPortResultSuccess
 import org.slf4j.LoggerFactory
+import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
+@Service
 class OrderMongoPort(val ordersRepository: OrdersRepository, val mapper: Mapper) : OrderPort {
     companion object {
         private val logger = LoggerFactory.getLogger(OrderMongoPort::class.java)

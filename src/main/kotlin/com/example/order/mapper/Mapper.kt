@@ -7,8 +7,8 @@ import com.example.order.model.CreateOrder
 import com.example.order.model.OrderNotPlaced
 import com.example.order.model.OrderPlaced
 import com.example.order.model.OrderResult
-import com.example.order.model.OrderStatus
 import com.example.order.repository.OrderDocument
+import com.example.order.repository.OrderDocumentStatus
 import com.example.order.service.ReserveClientRequest
 import org.springframework.stereotype.Component
 import com.example.order.model.Deduction as DeductionEntity
@@ -20,9 +20,7 @@ class Mapper {
     fun mapToCommand(placeOrder: PlaceOrderRequest) =
         with(placeOrder) {
             CreateOrder(
-                paymentConfirmed = false,
                 number = null,
-                status = OrderStatus.NEW,
                 paymentBankAccountNumber = paymentBankAccountNumber,
                 totalAmount = totalAmount,
                 _deductions = deductions.map { DeductionEntity(sku = it.sku, quantity = it.quantity) },
@@ -44,6 +42,8 @@ class Mapper {
                 paymentBankAccountNumber = paymentBankAccountNumber,
                 orderNumber = requireNotNull(number),
                 totalAmount = totalAmount,
+                paymentConfirmed = false,
+                orderStatus = OrderDocumentStatus.NEW,
                 items = deductions.map { with(it) { DeductionDocument(sku = sku, quantity = quantity) } },
             )
         }

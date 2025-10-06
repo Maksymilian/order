@@ -23,4 +23,6 @@ data class OrderDocument(
     val orderNumber: String,
     val totalAmount: BigDecimal,
     val items: List<Deduction>,
+    val paymentConfirmed: Boolean,
+    val orderStatus: OrderDocumentStatus,
 )

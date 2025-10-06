@@ -34,3 +34,21 @@ services:
       - ./keycloak-config:/opt/keycloak/data/import
     ports:
       - "7081:7081"
+  pact-stub-server:
+    image: pactfoundation/pact-stub-server
+    healthcheck:
+      test: ["CMD", "true"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    volumes:
+      - ./target/pacts:/app/pacts
+    command:
+      - '-p'
+      - '8080'
+      - '-d'
+      - '/app/pacts'
+      - '-l'
+      - 'info'
+    ports:
+      - "8381:8080"
