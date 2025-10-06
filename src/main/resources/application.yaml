@@ -1,7 +1,7 @@
 server:
   port: 8380
-order:
-  clientId: order
+shop:
+  clientId: shop
 stock:
   url: http://localhost:8381
 spring:
@@ -12,7 +12,14 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:7081/realms/order-dev
-
+      client:
+        registration:
+          shop:
+            client-id: ${shop.clientId}
+            authorization-grant-type: client_credentials
+        provider:
+          shop:
+            token-uri: http://localhost:7081/realms/order-dev/protocol/openid-connect/token
   flyway:
     enabled: true
     locations: classpath:db/migration

@@ -14,7 +14,7 @@ import kotlin.collections.get
 
 @Component
 class JwtConverter : Converter<Jwt, Mono<AbstractAuthenticationToken>> {
-    @Value("\${order.clientId}")
+    @Value("\${shop.clientId}")
     private val clientId: String? = null
 
     override fun convert(jwt: Jwt): Mono<AbstractAuthenticationToken> {
