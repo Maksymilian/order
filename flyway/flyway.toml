@@ -1,0 +1,11 @@
+[environments.mongodb]
+url = "mongodb://mongo-order:27017"
+user = "root"
+password = "secret"
+
+[flyway]
+baselineOnMigrate=true
+executeInTransaction=false
+environment = "mongodb"
+sqlMigrationSuffixes = [".js"]
+locations = ["filesystem:/migrations"]
