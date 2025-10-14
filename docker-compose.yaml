@@ -1,8 +1,7 @@
 services:
-  mongodb:
-    image: 'mongo:latest'
+  mongo-order:
+    image: 'mongo:8.0.15-noble'
     environment:
-      - 'MONGO_INITDB_DATABASE=mydatabase'
       - 'MONGO_INITDB_ROOT_PASSWORD=secret'
       - 'MONGO_INITDB_ROOT_USERNAME=root'
     ports:
@@ -15,6 +14,15 @@ services:
       start_period: 30s
     volumes:
       - ./mongodb-data:/data/db
+  flyway:
+    image: flyway/flyway:11.14.0-mongo
+    entrypoint: ["flyway", "migrate"]
+    depends_on:
+      mongo-order:
+        condition: service_healthy
+    volumes:
+      - ./flyway/flyway.toml:/flyway/conf/flyway.toml
+      - ./flyway/migrations:/migrations
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
     environment:

@@ -5,8 +5,17 @@ shop:
 stock:
   url: http://localhost:8381
 spring:
+  mongodb:
+    port: 27017
+    host: localhost
+    database: test
+    username: client
+    password: pa33w0rd
   application:
     name: order
+  docker:
+    compose:
+      enabled: true
   security:
     oauth2:
       resourceserver:
@@ -20,8 +29,3 @@ spring:
         provider:
           shop:
             token-uri: http://localhost:7081/realms/order-dev/protocol/openid-connect/token
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
-    mongodb:
-      uri: mongodb://localhost:27017/your_database
